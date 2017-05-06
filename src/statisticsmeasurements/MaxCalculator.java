@@ -23,6 +23,8 @@ public class MaxCalculator {
 		return max;
 	}
 	
+	
+	
 	public static void main(String[] args){
 		
 		ArrayList<Double> v = new ArrayList<Double>();

@@ -1,5 +1,7 @@
 package testing;
 
-public class MaxTest {
 
+public class MaxTest {
+	
+	
 }
