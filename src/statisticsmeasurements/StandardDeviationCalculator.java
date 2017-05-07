@@ -6,17 +6,13 @@ public class StandardDeviationCalculator {
 	
 
 	public static double findStandardDeviation(ArrayList<Double> values){
-		
-		int size = values.size();
-		
-		for(int i = 1; i<size; i++){
-			sum = sum + values.get(i).doubleValue();
-		}
-		
-		mean = sum/size;
+	
+		double mean;
+		double variance;
+		double standarddeviation;
 	
 		for(int i = 1; i<size; i++){
-			temp += (values.get(i).doubleValue()-mean)*(values.get(i).doubleValue()-mean)
+			temp += (values.get(i).doubleValue()-MeanCalculator.findMean(mean))*(values.get(i).doubleValue()-MeanCalculator.findMean(mean))
 		}
 		
 		variance = temp/size;

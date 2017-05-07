@@ -3,6 +3,8 @@ package statisticsmeasurements;
 import java.util.ArrayList;
 
 public class MeanCalculator {
+	double sum;
+	double mean;
 	
 	public static double findMean(ArrayList<Double> values){
 		int size = values.size();
