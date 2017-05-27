@@ -31,7 +31,7 @@ public class MaxCalculator {
 		double d = 0.0;
 		System.out.println("The random values are :");
 		for(int i = 0; i<100; i++){
-			d = Math.random()*100.0;
+			d = RandomGenerator.getRandom(0.0, 100.0);
 			v.add(d);
 			System.out.print(d+",  ");
 		}

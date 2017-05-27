@@ -43,15 +43,17 @@ public class MedianCalculator {
 	
 	public static int partition(ArrayList<Double> values, int left, int right, double pivot){
 		int rightPointer = right-1;
-		
+		//System.out.println("left   "+left);
 		while(true){
 			while(values.get(left).doubleValue() < pivot){
 				left++;
+				//System.out.println("loop 1");
 			}
-			while(rightPointer >= 0 && values.get(rightPointer).doubleValue() > pivot){
+			while(rightPointer >= 0 && values.get(rightPointer).doubleValue() >= pivot){
 				rightPointer--;
+				//System.out.println("loop 2");
 			}
-			
+			//System.out.println(left+"   r: "+rightPointer);
 			if(left >= rightPointer){
 				break;
 			}else{
@@ -73,11 +75,17 @@ public class MedianCalculator {
 		double d = 0.0;
 		System.out.println("The random values are :");
 		for(int i = 0; i<100; i++){
-			d = Math.random()*100.0;
+			d = RandomGenerator.getRandom(0.0, 100.0);
 			v.add(d);
 			
 		}
-		
+		for(int i=0; i<v.size(); i++){
+			if(i%10 == 0)
+				System.out.println();
+			System.out.print(v.get(i)+",  ");
+		}
+		System.out.println();
+		System.out.println();
 		//sort the values then find median
 		double median = MedianCalculator.findMedian(v);
 		for(int i=0; i<v.size(); i++){

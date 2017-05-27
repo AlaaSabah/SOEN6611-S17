@@ -7,7 +7,7 @@ public class RandomGenerator {
 	
 	public static double getRandom(double low, double high){
 		
-		double v = ((System.currentTimeMillis()*root)%(System.currentTimeMillis()+root)*previous)%1;
+		double v = ((System.currentTimeMillis()*root)%(System.currentTimeMillis()+root)*previous*root)%1;
 		v = v*(high-low)+low;
 		previous = v;
 		if(previous <= 0.0)

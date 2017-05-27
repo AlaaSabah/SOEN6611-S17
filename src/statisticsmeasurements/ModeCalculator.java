@@ -39,22 +39,18 @@ public class ModeCalculator {
 	public static void main(String[]args){
 		ArrayList<Double> v = new ArrayList<Double>();
 		double d = 0.0;
-		int freq = 0;
+		
 		System.out.println("The random values are :");
 		
 		for(int i = 0; i<100; i++){
-			d = Math.random()*100.0;
-			freq = (int)(Math.random()*100+1);
-			for(int j=0; j<freq; j++){
-				v.add(d);
-				System.out.print(d+",  ");
-				if(v.size() == 100)
-					break;
-			}
-			if(v.size() == 100)
-				break;
+			d = RandomGenerator.getRandom(0.0, 100.0);
+			v.add(d);
 		}
 		
+		v = MedianCalculator.quickSort(v, 0, v.size()-1);
+		for(int j=0; j<100; j++){
+			System.out.print(v.get(j)+",  ");
+		}
 		System.out.println();
 		System.out.println("Mode values are : "+ ModeCalculator.printMode(ModeCalculator.findMode(v)));
 	}
