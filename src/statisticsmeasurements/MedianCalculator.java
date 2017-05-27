@@ -6,6 +6,8 @@ public class MedianCalculator {
 	
 	public static double findMedian(ArrayList<Double> values){
 		
+		values = quickSort(values, 0, values.size()-1);
+		
 		int size = values.size();
 		// N is odd
 		if(size%2 == 1){
@@ -15,15 +17,54 @@ public class MedianCalculator {
 		return (values.get(size/2-1)+values.get(size/2))/2.0;
 	}
 	
-	public static ArrayList<Double> sort(ArrayList<Double> values){
-		ArrayList<Double> sorted = new ArrayList<Double>();
-		while(values.size()>1){
-			double min = MinCalculator.findMin(values);
-			sorted.add(min);
-			values.remove(min);
+//	public static ArrayList<Double> sort(ArrayList<Double> values){
+//		ArrayList<Double> sorted = new ArrayList<Double>();
+//		while(values.size()>1){
+//			double min = MinCalculator.findMin(values);
+//			sorted.add(min);
+//			values.remove(min);
+//		}
+//		sorted.add(values.get(0));
+//		return sorted;
+//			
+//	}
+	
+	public static ArrayList<Double> quickSort(ArrayList<Double> values, int left, int right){
+		
+		if(left >= right){
+			return values;
 		}
-		sorted.add(values.get(0));
-		return sorted;
+		
+		double pivot = values.get(right).doubleValue();
+		int partition = partition(values, left, right, pivot);
+		 return quickSort(quickSort(values, left, partition-1), partition+1, right);
+		
+	}
+	
+	public static int partition(ArrayList<Double> values, int left, int right, double pivot){
+		int rightPointer = right-1;
+		
+		while(true){
+			while(values.get(left).doubleValue() < pivot){
+				left++;
+			}
+			while(rightPointer >= 0 && values.get(rightPointer).doubleValue() > pivot){
+				rightPointer--;
+			}
+			
+			if(left >= rightPointer){
+				break;
+			}else{
+				double leftValue = values.get(left).doubleValue();
+				double rightValue = values.get(rightPointer).doubleValue();
+				values.set(left, rightValue);
+				values.set(rightPointer, leftValue);
+			}
+		}
+		//swap pivot with left
+		values.set(right, values.get(left));//in place of pivot
+		values.set(left, pivot);
+		return left;
 	}
 
 	public static void main(String[]args){
@@ -36,13 +77,14 @@ public class MedianCalculator {
 			v.add(d);
 			
 		}
-		//sort the values
-		ArrayList<Double> sorted = MedianCalculator.sort(v);
-		for(int i=0; i<sorted.size(); i++){
-			System.out.print(sorted.get(i)+",  ");
+		
+		//sort the values then find median
+		double median = MedianCalculator.findMedian(v);
+		for(int i=0; i<v.size(); i++){
+			System.out.print(v.get(i)+",  ");
 		}
 		System.out.println();
-		System.out.println("Median value is : "+ MedianCalculator.findMedian(sorted));
+		System.out.println("Median value is : "+ median);
 		
 	}
 }
