@@ -18,6 +18,7 @@ public class StandardDeviationCalculator {
 		return sqrRoot(mean);
 	}
 	
+	//source of code: http://www.programcreek.com/2012/02/java-calculate-square-root-without-using-library-method/
 	public static double sqrRoot(double num){
 		double temp;
 		double sqr = num/2.0;

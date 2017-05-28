@@ -27,10 +27,12 @@ public class ModeCalculator {
 		return modeValues;
 	}
 	
-	public static String printMode(ArrayList<Double> mode){
+	public static String printData(ArrayList<Double> data){
 		String s = "";
-		for(int i=0; i<mode.size(); i++){
-			s+=mode.get(i)+",  ";
+		for(int i=0; i<data.size(); i++){
+			if(i%9 == 0)
+				s+="\n";
+			s+=data.get(i)+",  ";
 		}
 		
 		return s;
@@ -52,7 +54,7 @@ public class ModeCalculator {
 			System.out.print(v.get(j)+",  ");
 		}
 		System.out.println();
-		System.out.println("Mode values are : "+ ModeCalculator.printMode(ModeCalculator.findMode(v)));
+		System.out.println("Mode values are : "+ ModeCalculator.printData(ModeCalculator.findMode(v)));
 	}
 
 
