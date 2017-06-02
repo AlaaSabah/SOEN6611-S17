@@ -7,7 +7,8 @@ public class ModeCalculator {
 	
 
 	public static ArrayList<Double> findMode(ArrayList<Double> values){
-		
+		if(values == null || values.size() == 0)
+			return new ArrayList<Double>();
 		int size = values.size();
 		ArrayList<Double> frequency = new ArrayList<Double>(Collections.nCopies(size, 0.0));
 		
@@ -30,32 +31,12 @@ public class ModeCalculator {
 	public static String printData(ArrayList<Double> data){
 		String s = "";
 		for(int i=0; i<data.size(); i++){
-			if(i%9 == 0)
+			if(i%5 == 0)
 				s+="\n";
-			s+=data.get(i)+",  ";
+			s+=data.get(i)+"\t\t";
 		}
 		
 		return s;
 	}
-	
-	public static void main(String[]args){
-		ArrayList<Double> v = new ArrayList<Double>();
-		double d = 0.0;
-		
-		System.out.println("The random values are :");
-		
-		for(int i = 0; i<100; i++){
-			d = RandomGenerator.getRandom(0.0, 100.0);
-			v.add(d);
-		}
-		
-		v = MedianCalculator.quickSort(v, 0, v.size()-1);
-		for(int j=0; j<100; j++){
-			System.out.print(v.get(j)+",  ");
-		}
-		System.out.println();
-		System.out.println("Mode values are : "+ ModeCalculator.printData(ModeCalculator.findMode(v)));
-	}
-
 
 }

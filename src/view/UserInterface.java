@@ -36,14 +36,15 @@ public class UserInterface {
 		while(true){
 		System.out.println();	
 		System.out.println("1. To set the size of the dataset and generate its values, please enter \"new\".");
-		System.out.println("2. To sort the dataset, please enter \"sort\".");
-		System.out.println("3. To find the minimum, please enter \"m\".");
-		System.out.println("4. To find the maximum, please enter \"M\".");
-		System.out.println("5. To find the mode, please enter \"o\".");
-		System.out.println("6. To find the median, please enter \"d\".");
-		System.out.println("7. To find the mean, please enter \"u\".");
-		System.out.println("8. To find the standard deviation, please enter \"sd\".");
-		System.out.println("9. To end, please enter \"x\".");
+		System.out.println("2. To do all calculations, please enter \"all\".");
+		System.out.println("3. To sort the dataset, please enter \"sort\".");
+		System.out.println("4. To find the minimum, please enter \"m\".");
+		System.out.println("5. To find the maximum, please enter \"M\".");
+		System.out.println("6. To find the mode, please enter \"o\".");
+		System.out.println("7. To find the median, please enter \"d\".");
+		System.out.println("8. To find the mean, please enter \"u\".");
+		System.out.println("9. To find the standard deviation, please enter \"sd\".");
+		System.out.println("10. To end, please enter \"x\".");
 		
 		choice = scanner.next();
 		
@@ -59,9 +60,23 @@ public class UserInterface {
 			}
 			
 			dataset = getDataset(size);
+		}else if(choice.equals("all")){
+			System.out.println("Minimum value  = "+MinCalculator.findMin(dataset));
+			System.out.println("***************************************");
+			System.out.println("Maximum value  = "+MaxCalculator.findMax(dataset));
+			System.out.println("***************************************");
+			System.out.println("Mode value  = "+ModeCalculator.printData(ModeCalculator.findMode(dataset)));
+			System.out.println("***************************************");
+			System.out.println("Median value  = "+MedianCalculator.findMedian(dataset));
+			System.out.println("***************************************");
+			System.out.println("Mean value  = "+MeanCalculator.findMean(dataset));
+			System.out.println("***************************************");
+			System.out.println("Standard deviation value  = "+StandardDeviationCalculator.findStandardDeviation(dataset));
+			System.out.println("***************************************");
+			
 		}else if(choice.equals("sort")){
 			System.out.println("Sorted Dataset  is : ");
-			dataset = MedianCalculator.quickSort(dataset, 0, dataset.size()-1);
+			dataset = MedianCalculator.sort(dataset);
 			System.out.println(ModeCalculator.printData(dataset));
 		}else if(choice.equals("m")){
 			System.out.println("Minimum value  = "+MinCalculator.findMin(dataset));
@@ -76,6 +91,7 @@ public class UserInterface {
 		}else if(choice.equals("sd")){
 			System.out.println("Standard deviation value  = "+StandardDeviationCalculator.findStandardDeviation(dataset));
 		}else if(choice.equals("x")){
+			scanner.close();
 			break;
 		}else{
 			System.out.println("Please enter a valid choice..");
@@ -91,9 +107,9 @@ public class UserInterface {
 		for(int i = 0 ; i<size ; i++){
 			v = RandomGenerator.getRandom(0, 100);
 			data.add(v);
-			if(i%9 == 0)
+			if(i%5 == 0)
 				System.out.println();
-			System.out.print(v+", ");
+			System.out.print(v+"\t\t");
 		}
 		System.out.println();
 		

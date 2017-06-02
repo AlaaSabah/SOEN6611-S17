@@ -14,13 +14,5 @@ public class RandomGenerator {
 			previous = 1.0;
 		return v;
 	}
-	
-	public static void main(String[]args){
-		for(int i=0; i<100; i++){
-			if(i%10 == 0)
-				System.out.println();
-			System.out.print("   "+RandomGenerator.getRandom(0.0, 100.0));
-		}
-		
-	}
+
 }
